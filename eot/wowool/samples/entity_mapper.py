@@ -14,7 +14,7 @@ try:
     doc = entities(doc)
 
     mapper = EntityMapper(  lhs = 'Person', rhs = [ 'Position', 'Company' ] )
-    print( mapper([doc]) )
+    print( mapper(doc ))
 
 except Error as ex:
     print("Exception:",ex)

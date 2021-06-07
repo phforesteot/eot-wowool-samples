@@ -4,11 +4,11 @@
 from eot.wowool.native import Analyzer, Domain
 from eot.wowool.annotation import Concept
 from eot.wowool.error import Error
-from eot.wowool.tool.entity_graph import EntityGraph
+from eot.wowool.native_tool.entity_graph import EntityGraph
 
 # fmt: off
 graph_config = {
-  "slots" : { "USER" : { "expr":"USER" } },
+  "slots" : { "USER" : { "expr":"USER" }, "Document": {} },
   "links" : [
           {   "from"      : { "expr" : "Person"  , "attributes" : ["gender"]  },
               "to"        : { "expr" : "Company" , "attributes" : ["country"] } ,
@@ -20,15 +20,15 @@ graph_config = {
               "relation"  : { "expr" : "Position" , "label" :"stem" }
           }
           ,
-          {   "from"      : { "slot" : "USER" ,  "label": "USER"},
+          {   "from"      : { "slot" : "USER" },
               "to"        : { "expr" : "Person"},
               "relation"  : { "label": "Mentions"  }
           },
           {   "from"      : { "expr" : "USER" },
-              "to"        : { "slot" : "Document", "label": "Document"} ,
+              "to"        : { "slot" : "Document"} ,
               "relation"  : { "label": "Mentions"  }
           }
-      ]
+      ],
 }
 # fmt: on
 

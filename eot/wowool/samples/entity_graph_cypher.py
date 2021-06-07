@@ -4,11 +4,11 @@
 from eot.wowool.native import Analyzer, Domain
 from eot.wowool.annotation import Concept
 from eot.wowool.error import Error
-from eot.wowool.tool.entity_graph import EntityGraph
+from eot.wowool.native_tool.entity_graph import EntityGraph
 
 # fmt: off
 graph_config = {
-  "slots" : { "USER" : { "expr":"USER" } },
+  "slots" : { "USER" : { "expr":"USER" }, "Document" : {} },
   "links" : [
           {   "from"      : { "expr" : "Person"  , "attributes" : ["gender"]  },
               "to"        : { "expr" : "Company" , "attributes" : ["country"] } ,
@@ -49,13 +49,13 @@ try:
     print(results.df_relation)
     print(results.df_to)
 
-    from eot.wowool.tool.entity_graph.cypher import CypherStream
+    from eot.wowool.native_tool.entity_graph.cypher import CypherStream
 
     cs = CypherStream("EOT")
     for neo4j_query in cs(results):
         print(neo4j_query)
 
-    from eot.wowool.tool.entity_graph.d3js_graph import D3JSGraphStream
+    from eot.wowool.native_tool.entity_graph.d3js_graph import D3JSGraphStream
 
     with open("index.html", "w") as fh:
         fh.write("<html><body>")
