@@ -5,8 +5,8 @@ from eot.wowool.native import Analyzer, Domain
 from eot.wowool.error import Error
 
 try:
-    dutch = Analyzer(language="dutch")
-    entities = Domain( "dutch-entity" )
+    english = Analyzer(language="english")
+    entities = Domain( "english-entity" )
 
     conjecture = Domain(source="""
 
@@ -15,14 +15,14 @@ namespace conjecture {
 
     rule :
     {
-        'het' { <> }= Info
-        'bedrijf'
+        'the' { <> }= Info
+        'company'
         {(Prop)+} = Company@(info=f"{rule.Info.stem().upper()}")
     };
 }
     """)
 
-    doc = dutch("Het Vlaams bedrijf NietGekent werkt samen met EyeOnText.")
+    doc = english("The Flemish company NietGekent is located in Antwerp.")
     doc = entities(doc)
     doc = conjecture(doc)
     print(doc)
