@@ -12,14 +12,14 @@ try:
 // Compound Sample:
 // capture all the word with verzekering
 lexicon:(input="component"){
-    försäkring } = INSURANCE_COMP;
+    försäkring } = INSURANCE_COMPONENT;
 
 // capture only the real verzekering not verzekeringsmaatschapijen
 lexicon:(input="head"){
     försäkring } = INSURANCE_HEAD;
 
 // capture the cost of the insurance.
-rule:{ {h'försäkring'} = INSURANCE_TYPE { <Num> <+currency> } = INSURANCE_PRICE };
+rule:{ {h'försäkring'} = INSURANCE_TYPE { Num +currency } = INSURANCE_PRICE };
     """
     compounds = Domain(source=rule_source)
     input = "Det finns försäkringsbolag 40000 euro och försäkring: bilförsäkring 100 euro, cykelförsäkring 200 SEK "
@@ -33,7 +33,7 @@ rule:{ {h'försäkring'} = INSURANCE_TYPE { <Num> <+currency> } = INSURANCE_PRIC
     print("-" * 80)
     print(f"{'uri':<20s} | {'literal':<30s} | {'stem'}")
     print("-" * 80)
-    for concept in Concept.iter(doc, lambda concept : concept.uri == "INSURANCE_COMP" ):
+    for concept in Concept.iter(doc, lambda concept : concept.uri == "INSURANCE_COMPONENT" ):
         print(f"{concept.uri:<20s} | {concept.literal:<30s} | {concept.stem}")
     print("-" * 80)
     for concept in Concept.iter(doc, lambda concept : concept.uri == "INSURANCE_HEAD" ):

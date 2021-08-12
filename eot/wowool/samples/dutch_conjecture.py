@@ -25,6 +25,7 @@ namespace conjecture {
     doc = dutch("Het Vlaams bedrijf NietGekent werkt samen met EyeOnText.")
     doc = entities(doc)
     doc = conjecture(doc)
+    # doc = conjecture(entities(dutch("Het Vlaams bedrijf NietGekent werkt samen met EyeOnText.")))
     print(doc)
 except Error as ex:
     print("Exception:",ex)
