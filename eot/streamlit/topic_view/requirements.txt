@@ -6,5 +6,4 @@ eot-wowool-lid-basic
 eot-wowool-lxcommon-basic
 eot-wowool-sdk
 eot-wowool-topic-identifier
-eot-wowool-license
 streamlit
