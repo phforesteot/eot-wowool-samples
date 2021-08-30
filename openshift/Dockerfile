@@ -11,3 +11,12 @@ RUN apt-get update \
 
 # install python
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1
+
+
+ENV PIP_EXTRA_INDEX_URL https://partners:y7uTy%2B%5D.fYytqq@repo.eyeontext.com/repository/eyeontext-pypi/simple
+RUN curl "https://bootstrap.pypa.io/get-pip.py" -o "install-pip3-ubuntu.py" && python3 install-pip3-ubuntu.py
+
+pip3 install eot-wowool-common==2.0.4
+pip3 install eot-wowool-sdk
+pip3 install eot-wowool-english_entity
+pip3 install eot-wowool-topic_identifier
