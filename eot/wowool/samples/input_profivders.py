@@ -5,11 +5,16 @@ from eot.wowool.native import Analyzer, Domain
 from eot.wowool.annotation import Concept
 from eot.wowool.error import Error
 from eot.io import InputProviders
+import sys
 
-try:
 
-    for ip in InputProviders( "/Users/phforest/corpus/english/bloomberg"):
+if len(sys.argv) <= 1:
+    print("usage: python3 input_profivders.py [folder] ")
+    exit(-1)
+
+
+for ip in InputProviders(sys.argv[1]):
+    try:
         print(ip.id(), ip.text())
-
-except Error as ex:
-    print("Exception:",ex)
+    except Exception as ex:
+        print(f"Exception in {ip.id()}")
