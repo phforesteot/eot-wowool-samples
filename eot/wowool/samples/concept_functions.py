@@ -6,10 +6,10 @@ from eot.wowool.annotation import Concept
 from eot.wowool.error import Error
 
 try:
-    english = Analyzer(language="dutch")
+    dutch = Analyzer(language="dutch")
     entities = Domain( "dutch-entity" )
 
-    doc = english("Jan Van Den Berg en Jeff Jansens.")
+    doc = dutch("Jan Van Den Berg en Jeff Jansens.")
     doc = entities(doc)
     print(doc)
     concept_filter = lambda concept : concept.uri == 'Person'
