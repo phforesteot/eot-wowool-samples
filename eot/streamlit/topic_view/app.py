@@ -1,5 +1,5 @@
 import streamlit as st
-from eot.wowool.native import Analyzer, Domain
+from eot.wowool.native import Language, Domain
 from eot.wowool.topic_identifier import TopicIdentifier
 from eot.wowool.annotation import Concept
 import pandas as pd
@@ -11,7 +11,7 @@ st.write("EyeOnText English Topics and Entities")
 name = st.text_area("Enter Your text", """John Smith works at EyeOnText in Antwerp.""")
 if st.button("Analyze"):
     input_text = name
-    analyzer = Analyzer(language="english")
+    analyzer = Language("english")
     entities = Domain("english-entity")
     topicit = TopicIdentifier(language="english")
 

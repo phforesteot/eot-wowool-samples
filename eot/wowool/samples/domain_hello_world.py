@@ -5,7 +5,7 @@
 # or using scons
 # scons .
 
-from eot.wowool.native import Analyzer, Domain
+from eot.wowool.native import Language, Domain
 from eot.wowool.annotation import Concept
 from eot.wowool.error import Error
 from pathlib import Path
@@ -13,7 +13,7 @@ from pathlib import Path
 this_folder  = Path(__file__).parent
 
 try:
-    dutch = Analyzer(language="dutch")
+    dutch = Language("dutch")
     helloworld = Domain( Path( this_folder, '..', '..', '..', 'domains' , 'helloworld.dom' ) )
 
     doc = dutch("greetings world.")

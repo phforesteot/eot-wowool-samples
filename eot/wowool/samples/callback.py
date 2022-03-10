@@ -1,10 +1,10 @@
 #  Copyright (c) 2020 EyeOnText, All Rights Reserved.
 #  NOTICE:  All information contained herein is, and remains the property of EyeOnText.
 
-from eot.wowool.native import Analyzer, Domain, Filter
+from eot.wowool.native import Language, Domain, Filter
 from eot.wowool.annotation import Concept
 
-a = Analyzer(language="english")
+a = Language("english")
 dc = Domain("english-company")
 doc = dc(a("this is a EyeOnText."))
 
@@ -17,7 +17,7 @@ rule:{ Company }= Other@(name=f"{rule.literal()}" );
 )
 
 doc = call_plugin(doc)
-filter = Filter( [ 'Other', 'Company' ] )
+filter = Filter( [ 'Other', 'Company', 'PLUGIN_COMPANY' ] )
 doc = filter(doc)
 concepts = [c for c in Concept.iter(doc)]
 uris = [c.uri for c in concepts]

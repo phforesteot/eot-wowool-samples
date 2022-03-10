@@ -1,6 +1,6 @@
 #  Copyright (c) 2020 EyeOnText, All Rights Reserved.
 #  NOTICE:  All information contained herein is, and remains the property of EyeOnText.
-from eot.wowool.native import Analyzer, Domain, Compiler
+from eot.wowool.native import Language, Domain, Compiler
 from eot.wowool.annotation import Concept
 from eot.wowool.error import Error
 from pathlib import Path
@@ -16,7 +16,7 @@ try:
         print(results)
         exit(-1)
 
-    dutch = Analyzer(language="dutch")
+    dutch = Language("dutch")
     helloworld = Domain( project_folder / 'extra_greeting.dom' )
 
     doc = dutch("greetings world.")

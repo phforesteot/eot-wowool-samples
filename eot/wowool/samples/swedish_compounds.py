@@ -1,13 +1,13 @@
 #  Copyright (c) 2020 EyeOnText, All Rights Reserved.
 #  NOTICE:  All information contained herein is, and remains the property of EyeOnText.
 
-from eot.wowool.native import Analyzer, Domain
+from eot.wowool.native import Language, Domain
 from eot.wowool.error import Error
 from eot.wowool.annotation import Concept
 from eot.wowool.annotation import Token
 
 try:
-    analyzer = Analyzer(language="swedish")
+    analyzer = Language("swedish")
     rule_source ="""
 // Compound Sample:
 // capture all the word with verzekering

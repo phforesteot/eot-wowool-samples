@@ -1,11 +1,11 @@
 #  Copyright (c) 2020 EyeOnText, All Rights Reserved.
 #  NOTICE:  All information contained herein is, and remains the property of EyeOnText.
 
-from eot.wowool.native import Analyzer, Domain
+from eot.wowool.native import Language, Domain
 from eot.wowool.error import Error
 
 try:
-    dutch = Analyzer(language="dutch")
+    dutch = Language("dutch")
     entities = Domain( "dutch-entity" )
 
     conjecture = Domain(source="""

@@ -1,7 +1,7 @@
 #  Copyright (c) 2020 EyeOnText, All Rights Reserved.
 #  NOTICE:  All information contained herein is, and remains the property of EyeOnText.
 
-from eot.wowool.native import Analyzer, Domain
+from eot.wowool.native import Language, Domain
 from eot.wowool.annotation import Concept
 from eot.wowool.error import Error
 from eot.wowool.native_tool.entity_graph import EntityGraph
@@ -33,7 +33,7 @@ graph_config = {
 # fmt: on
 
 try:
-    english = Analyzer(language="dutch")
+    english = Language("dutch")
     entities = Domain("dutch-entity")
     myrule = Domain(source=""" rule:{ 'user' '\:' {(<>)+}=USER }; """)
     doc = english("user:John \n\nJan Van Den Berg werkte als hoofdarts bij Omega Pharma.")

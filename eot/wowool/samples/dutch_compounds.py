@@ -1,13 +1,13 @@
 #  Copyright (c) 2020 EyeOnText, All Rights Reserved.
 #  NOTICE:  All information contained herein is, and remains the property of EyeOnText.
 
-from eot.wowool.native import Analyzer, Domain
+from eot.wowool.native import Language, Domain
 from eot.wowool.error import Error
 from eot.wowool.annotation import Concept
 from eot.wowool.annotation import Token
 
 try:
-    analyzer = Analyzer(language="dutch")
+    dutch = Language("dutch")
     rule_source ="""
 // Compound Sample:
 // capture all the word with verzekering
@@ -23,7 +23,7 @@ rule:{ h'verzekering' { <+currency> } = INSURANCE_PRICE };
     """
     compounds = Domain(source=rule_source)
     input = "Er zijn verzekeringsmaatschapijen €40.000.000 en verzekeringen: autoverzekeringen €100, fietsverzekering €10"
-    doc = compounds(analyzer(input))
+    doc = compounds(dutch(input))
     print("-" * 80)
     print(rule_source)
     print("-" * 80)
