@@ -1,0 +1,1 @@
+rule:{ Facility 'in' City } = GeoTag;
