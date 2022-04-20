@@ -4,12 +4,12 @@
 #
 from eot.wowool.error import Error
 from eot.wowool.topic_identifier import TopicIdentifier
+from eot.wowool.document import Document
 
 try:
-
-    model = TopicIdentifier(language="english", topic_model="english.topic_model")
-    topics = model.get_topics("I saw black cars and a green bird and green house.", 5)
-    print(topics)
-
+    topic_it = TopicIdentifier(language="english")
+    doc = Document( "Every bamboo cut down is re-planted and excess material is used to heat up the factory." )
+    doc = topic_it( doc , 3)
+    print(doc.topics)
 except Error as ex:
-    print("Exception:",ex)
+  print("Exception:",ex)

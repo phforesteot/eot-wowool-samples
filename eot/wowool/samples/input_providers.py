@@ -6,11 +6,11 @@ import sys
 
 
 if len(sys.argv) <= 1:
-    print("usage: python3 input_profivders.py [folder] ")
+    print("usage: python3 input_providers.py [folder] ")
     exit(-1)
 
 
-for ip in InputProviders(sys.argv[1]):
+for ip in InputProviders(sys.argv[1], exclude_extensions=['.xml'] ):
     try:
         print(ip.id(), ip.text())
     except Exception as ex:

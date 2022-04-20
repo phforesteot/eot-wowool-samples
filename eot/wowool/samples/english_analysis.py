@@ -10,7 +10,7 @@ try:
     mydomain = Domain( source=""" rule:{ Person .. City }= PersonCity; """)
 
     doc = mydomain(entities(english("John Smith was in London on the 3/11/2020.")))
-    for sentence in doc:
+    for sentence in doc.analysis:
         print(f"S:({sentence.begin_offset},{sentence.end_offset})")
         for a in sentence:
             if a.is_token:

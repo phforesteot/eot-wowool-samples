@@ -12,3 +12,5 @@ eot/wowool/samples/.autoenv.zsh
 eot/wowool/samples/env.sh
 eot/streamlit/topic_view/.topic_view
 eot/wowool/samples/env
+env
+eot/wowool/.DS_Store

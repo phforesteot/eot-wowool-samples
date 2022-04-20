@@ -4,27 +4,27 @@
 from eot.wowool.native import Language, Domain
 from eot.wowool.annotation import Concept
 from eot.wowool.error import Error
-from eot.wowool.native_tool.entity_graph import EntityGraph
+from eot.wowool.tool.entity_graph import EntityGraph
 
 # fmt: off
 graph_config = {
-  "slots" : { "USER" : { "expr":"USER" }, "Document" : {} },
+  "slots" : { "USER" : { "uri":"USER" }, "Document" : {} },
   "links" : [
-          {   "from"      : { "expr" : "Person"  , "attributes" : ["gender"]  },
-              "to"        : { "expr" : "Company" , "attributes" : ["country"] } ,
+          {   "from"      : { "uri" : "Person"  , "attributes" : ["gender"]  },
+              "to"        : { "uri" : "Company" , "attributes" : ["country"] } ,
               "relation"  : { "label": "P2C" }
           }
           ,
-          {   "from"      : { "expr" : "Person" },
-              "to"        : { "expr" : "Company"},
-              "relation"  : { "expr" : "Position" , "label" :"stem" }
+          {   "from"      : { "uri" : "Person" },
+              "to"        : { "uri" : "Company"},
+              "relation"  : { "uri" : "Position" , "label" :"stem" }
           }
           ,
           {   "from"      : { "slot" : "USER" ,  "label": "USER"},
-              "to"        : { "expr" : "Person"},
+              "to"        : { "uri" : "Person"},
               "relation"  : { "label": "Mentions"  }
           },
-          {   "from"      : { "expr" : "USER" },
+          {   "from"      : { "uri" : "USER" },
               "to"        : { "slot" : "Document", "label": "Document"} ,
               "relation"  : { "label": "Mentions"  }
           }
@@ -39,30 +39,26 @@ try:
     doc = english("user:John \n\nJan Van Den Berg werkte als hoofdarts bij Omega Pharma.")
     doc = entities(doc)
     doc = myrule(doc)
-    print(doc)
     graphit = EntityGraph(graph_config)
-    # returns a panda dataframe.
     graphit.slots["Document"] = {"data": "hello"}
-    results = graphit(doc)
+    doc = graphit(doc)
 
-    print(results.df_from)
-    print(results.df_relation)
-    print(results.df_to)
+    results = doc.entity_graph.merge()
 
-    from eot.wowool.native_tool.entity_graph.cypher import CypherStream
+    print('-' * 80)
+    print(f'relations : {results.headers}')
+    print('-' * 80)
+    for relation in results.rows:
+        print(relation)
+
+    print('-' * 80)
+    print('neo4j output:')
+    print('-' * 80)
+    from eot.wowool.tool.entity_graph.cypher import CypherStream
 
     cs = CypherStream("EOT")
-    for neo4j_query in cs(results):
+    for neo4j_query in cs(doc.entity_graph):
         print(neo4j_query)
-
-    from eot.wowool.native_tool.entity_graph.d3js_graph import D3JSGraphStream
-
-    with open("index.html", "w") as fh:
-        fh.write("<html><body>")
-        fh.write("""<div id="graphid"></div>""")
-        out = D3JSGraphStream(fh, filter=lambda c: c.uri != "NP")
-        out(None, results, "graphid")
-        fh.write("</body></html>")
 
 except Error as ex:
     print("Exception:", ex)

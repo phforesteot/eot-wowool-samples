@@ -13,7 +13,7 @@ try:
     doc = entities(doc)
     print(doc)
     concept_filter = lambda concept : concept.uri == 'Person'
-    for person in Concept.iter(doc, concept_filter) :
+    for person in Concept.iter(doc.analysis, concept_filter) :
         print( "flat: ", {**person} )
         print("-"  * 40 )
         print( f"tokens: {person.tokens}" )
@@ -35,7 +35,7 @@ try:
 
     print("-"  * 40 )
     print("- using find " )
-    for sentence in doc :
+    for sentence in doc.analysis :
         for pers in sentence.find("Person"):
             print(f"  {pers.literal}")
 

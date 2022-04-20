@@ -9,31 +9,31 @@ from eot.portal.client import Error
 
 try:
 
-    portal = Portal(api_key="***************")
-    english_entities = Pipeline(name="english-entity", portal=portal)
-    document =  english_entities("John Smith was in London on the 3/11/2020.")
+#     portal = Portal(api_key="***************")
+#     english_entities = Pipeline(name="english,entity", portal=portal)
+#     document =  english_entities("John Smith was in London on the 3/11/2020.")
 
-except Error as ex:
-    print("Exception:",ex)
+# except Error as ex:
+#     print("Exception:",ex)
 
-# or using with
-try:
+# # or using with
+# try:
 
-    with Portal(api_key="***************"):
-        english_entities = Pipeline(name="english-entity")
-        document =  english_entities("John Smith was in London on the 3/11/2020.")
-        print(document)
+#     with Portal(api_key="***************"):
+#         english_entities = Pipeline(name="english,entity")
+#         document =  english_entities("John Smith was in London on the 3/11/2020.")
+#         print(document)
 
-except Error as ex:
-    print("Exception:",ex)
+# except Error as ex:
+#     print("Exception:",ex)
 
 
 # or if you have set the environment variable which we recommend.
-# EOT_PORTAL_API_KEY
+# EOT_WOWOOL_PORTAL_API_KEY
 try:
 
     with Portal():
-        english_entities = Pipeline(name="english-entity")
+        english_entities = Pipeline(name="english,entity")
         document =  english_entities("John Smith was in London on the 3/11/2020.")
         print(document)
 

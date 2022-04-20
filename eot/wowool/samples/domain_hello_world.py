@@ -14,7 +14,7 @@ this_folder  = Path(__file__).parent
 
 try:
     dutch = Language("dutch")
-    helloworld = Domain( Path( this_folder, '..', '..', '..', 'domains' , 'helloworld.dom' ) )
+    helloworld = Domain( Path( this_folder, '..', '..', '..', 'domains' , 'extra_greeting.dom' ) )
 
     doc = dutch("greetings world.")
     doc = helloworld(doc)
