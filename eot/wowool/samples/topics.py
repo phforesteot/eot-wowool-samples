@@ -9,7 +9,7 @@ from eot.wowool.document import Document
 try:
     topic_it = TopicIdentifier(language="english")
     doc = Document( "Every bamboo cut down is re-planted and excess material is used to heat up the factory." )
-    doc = topic_it( doc , 3)
+    doc = topic_it( doc )
     print(doc.topics)
 except Error as ex:
   print("Exception:",ex)

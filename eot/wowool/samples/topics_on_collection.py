@@ -10,7 +10,7 @@ try:
 
     topic_it = TopicIdentifier(language="english", topic_model="english.topic_model")
     doc = Document("I saw black cars and a green bird and green house.")
-    doc = topic_it( doc, 5)
+    doc = topic_it( doc )
     print(doc.topics)
 
 except Error as ex:

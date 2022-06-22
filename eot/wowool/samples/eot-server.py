@@ -3,9 +3,9 @@
 # If you run from the docker container you will need to open a port while starting:
 # `pwd` would be the location of this file.
 
-# docker run -v `pwd`:/eotws/ -p 5000:5000 -it docker.eyeontext.com/eot/sdk:2.1.2 bash
+# docker run -v `pwd`:/eotws/ -p 5000:5000 -it docker.eyeontext.com/eot/sdk:2.6.1 bash
 
-# HOW TO RUN: export FLASK_APP=eot-server:app ;flask run --host 0.0.0.0
+# HOW TO RUN: export FLASK_APP=eot-server:app ;flask run --host 0.0.0.0 --port 5000
 #
 # curl -X POST -H 'Content-Type: application/json' -i http://localhost:5000/topics --data '{
 #    "text": "this document is about green gasses and yellow houses."
@@ -48,5 +48,6 @@ def get_topics():
     if "text" not in request.json:
         return jsonify({"Error": '"text" param missing in post request.'})
 
-    topics = topicit.get_topics(request.json["text"], 5)
-    return jsonify(topics)
+    doc = english( request.json["text"] )
+    doc = topicit(doc)
+    return jsonify(doc.topics)
