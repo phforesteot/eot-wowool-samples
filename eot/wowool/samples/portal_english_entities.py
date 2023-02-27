@@ -7,7 +7,6 @@ from eot.portal.client import Error
 # !!! Note
 # Make sure you have the correct api_key and that you have created a pipeline names english-entity
 
-try:
 
 #     portal = Portal(api_key="***************")
 #     english_entities = Pipeline(name="english,entity", portal=portal)

@@ -19,8 +19,9 @@ def run_test(cmd):
 THIS_DIR = Path(__file__).parent.resolve()
 
 for fn in Path(THIS_DIR).glob("*.py"):
-    if fn.stem != 'test_all_samples':
-        print("running:",fn)
-        run_test(f"""python3 {fn}""")
+    if fn.stem in [ 'test_all_samples', 'input_providers' , 'eot-server' , 'portal_english_entities'] :
+        continue
+    print("running:",fn)
+    run_test(f"""python3 {fn}""")
 
 

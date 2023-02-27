@@ -1,7 +1,7 @@
 #  Copyright (c) 2020 EyeOnText, All Rights Reserved.
 #  NOTICE:  All information contained herein is, and remains the property of EyeOnText.
 
-from eot.wowool.native import PipeLine
+from eot.wowool.native.core import PipeLine
 from eot.wowool.error import Error
 
 try:

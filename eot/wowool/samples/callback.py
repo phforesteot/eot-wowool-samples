@@ -1,11 +1,11 @@
 #  Copyright (c) 2020 EyeOnText, All Rights Reserved.
 #  NOTICE:  All information contained herein is, and remains the property of EyeOnText.
 
-from eot.wowool.native import Language, Domain, Filter
+from eot.wowool.native.core import Language, Domain, Filter
 from eot.wowool.annotation import Concept
 
 a = Language("english")
-dc = Domain("english-company")
+dc = Domain("english-business-news")
 doc = dc(a("this is a EyeOnText."))
 
 call_plugin = Domain(

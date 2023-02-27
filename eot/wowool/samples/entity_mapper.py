@@ -1,11 +1,11 @@
 #  Copyright (c) 2020 EyeOnText, All Rights Reserved.
 #  NOTICE:  All information contained herein is, and remains the property of EyeOnText.
 
-from eot.wowool.native import Language, Domain
+from eot.wowool.native.core import Language, Domain
 from eot.wowool.annotation import Concept
 from eot.wowool.error import Error
 from eot.io import InputProviders
-from eot.wowool.tool.entity_mapper import EntityMapper
+from eot.wowool.entity_mapper import EntityMapper
 try:
     dutch = Language("dutch")
     entities = Domain( "dutch-entity" )
@@ -15,7 +15,7 @@ try:
 
     mapper = EntityMapper(  lhs = 'Person', rhs = [ 'Position', 'Company' ] )
     doc = mapper(doc )
-    print( doc.entity_mapper )
+    print( doc.results(EntityMapper.ID) )
 
 except Error as ex:
     print("Exception:",ex)

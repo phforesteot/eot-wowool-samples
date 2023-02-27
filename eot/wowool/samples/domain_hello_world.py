@@ -5,7 +5,7 @@
 # or using scons
 # scons .
 
-from eot.wowool.native import Language, Domain
+from eot.wowool.native.core import Language, Domain
 from eot.wowool.annotation import Concept
 from eot.wowool.error import Error
 from pathlib import Path

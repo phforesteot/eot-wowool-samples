@@ -11,7 +11,7 @@ try:
     topic_it = TopicIdentifier(language="english", topic_model="english.topic_model")
     doc = Document("I saw black cars and a green bird and green house.")
     doc = topic_it( doc )
-    print(doc.topics)
+    print(doc.results(TopicIdentifier.ID))
 
 except Error as ex:
     print("Exception:",ex)
